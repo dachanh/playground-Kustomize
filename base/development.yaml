@@ -1,0 +1,21 @@
+apiVersion: application/v1
+kind: Deployment
+metadata:
+  name: playground-kustomize
+  labels:
+    app: playground-kustomize
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playground-kustomize
+  template:
+    metadata:
+      labels:
+        app: playground-kustomize
+    spec:
+      containers:
+      - name: gitops-k8s-kustomize
+        image: k8s.gcr.io/echoserver:1.10
+        ports:
+        - containerPort: 8080
